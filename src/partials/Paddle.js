@@ -14,9 +14,11 @@ export default class Paddle {
         switch (event.key) {
           case up:
             this.up();
+            this.y = Math.max(0, (this.y - this.speed));
             break;
           case down:
             this.down();
+            this.y = Math.min((this.boardHeight - this.height), (this.y + this.speed));
             break;
         }
       });
