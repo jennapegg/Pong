@@ -17,9 +17,9 @@ export default class Game {
 		this.paddleWidth, 
 		this.paddleHeight, 
 		this.boardGap,
-		((this.height - this.paddleHeight) / 2)
-		// KEYS.a,
-		// KEYS.z,
+		((this.height - this.paddleHeight) / 2),
+		KEYS.a,
+		KEYS.z,
 	)
 
 	this.player2 = new Paddle(
@@ -27,9 +27,9 @@ export default class Game {
 		this.paddleWidth, 
 		this.paddleHeight, 
 		(this.width - this.boardGap - this.paddleWidth),
-		((this.height - this.paddleHeight) / 2)
-		// KEYS.up,
-		// KEYS.down,
+		((this.height - this.paddleHeight) / 2),
+		KEYS.up,
+		KEYS.down,
 	)
 
     // Other code goes here...
