@@ -41,15 +41,29 @@ export default class Game {
 		KEYS.down,
 	)
 
+	document.addEventListener("keydown", event => {
+		switch (event.key) {
+			case KEYS.spaceBar:
+				this.pause = !this.pause;
+				break;
+		}
+	});
+	
 	//board
     // Other code goes here...
     this.gameElement = document.getElementById(this.element);
-    this.board = new Board(this.width, this.height);
+	this.board = new Board(this.width, this.height);
+	
+	
   }//end of constructor
 
   //what will be drawing the game
   render() {
-    // More code goes here...
+	// More code goes here...
+	if(this.pause){
+		return;
+	}
+
     this.gameElement.innerHTML = '';
 
     let svg = document.createElementNS(SVG_NS, 'svg');
