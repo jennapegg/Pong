@@ -7,10 +7,12 @@ export default class Ball {
       this.boardHeight = boardHeight;
       this.direction = 1;
 
+      this.color = "#FFF";
+
       this.ping = new Audio("public/sounds/pong-01.wav");
 
       this.reset();
-    }
+    } // end of constructor
 
     reset() {
       // this.ax = 0.01;
@@ -32,16 +34,17 @@ export default class Ball {
       const hitRight = this.x + this.radius >= this.boardWidth;
       const hitTop = this.y - this.radius <= 0;
       const hitBottom = this.y + this.radius >= this.boardHeight;
+      let colors = ['red', 'green', 'blue', 'orange', 'yellow'];
 
       if(hitLeft || hitRight){
         this.vx *= -1;
-        // this.ball.setAttributeNS(null, 'fill', '#000');
+        this.color = colors[Math.floor(Math.random() * colors.length)];
      }else if (hitTop || hitBottom){
         this.vy *= -1;
-      } //else {
-      //   this.ball.setAttributeNS(null, 'fill', '#000');
-      // }
+        this.color = colors[Math.floor(Math.random() * colors.length)];
     }
+  }
+
 
     paddleCollision(player1, player2) {
       if (this.vx > 0) {
@@ -74,7 +77,7 @@ export default class Ball {
     goal(player){
       player.score++;
       this.reset();
-      return player.score;
+      player.score;
     }
 
     render(svg, player1, player2) {
@@ -85,10 +88,10 @@ export default class Ball {
         const goalRight = this.x + this.radius >= this.boardWidth;
 
         if (goalLeft){
-          console.log(this.goal(player2));
+          this.goal(player2);
           this.direction = -1;
           }else if(goalRight){
-            console.log(this.goal(player1));
+            this.goal(player1);
             this.direction = 1;
           }
 
@@ -101,7 +104,7 @@ export default class Ball {
         
         let ball = document.createElementNS(SVG_NS, 'circle');
 
-        ball.setAttributeNS(null, 'fill', '#FFF');
+        ball.setAttributeNS(null, 'fill', this.color);
         ball.setAttributeNS(null, 'r', this.radius);
         ball.setAttributeNS(null, 'cx', this.x);
         ball.setAttributeNS(null, 'cy', this.y);
@@ -111,3 +114,4 @@ export default class Ball {
         
     }
   }
+

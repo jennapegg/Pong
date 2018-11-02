@@ -59,15 +59,22 @@ export default class Game {
     // Other code goes here...
     this.gameElement = document.getElementById(this.element);
 	this.board = new Board(this.width, this.height);
-	
-	
   }//end of constructor
 
+  
   //what will be drawing the game
   render() {
 	// More code goes here...
 	if(this.pause){
 		return;
+	}
+
+	if(this.player1.score === 10){
+		alert('You Won!');
+		location.reload();
+	}  else if(this.player2.score === 10){
+		alert('You Won!');
+		location.reload();
 	}
 
     this.gameElement.innerHTML = '';

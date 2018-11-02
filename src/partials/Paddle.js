@@ -22,19 +22,6 @@ export default class Paddle {
       document.addEventListener('keyup', event => {
         this.keyState[event.key || event.which] = false;
       }, true)
-
-      // document.addEventListener("keydown", event => {
-      //   switch (event.key) {
-      //     case up:
-      //       this.up();
-      //       this.y = Math.max(0, (this.y - this.speed));
-      //       break;
-      //     case down:
-      //       this.down();
-      //       this.y = Math.min((this.boardHeight - this.height), (this.y + this.speed));
-      //       break;
-      //   }
-      // });
     }//end of constructor
 
     up(){
@@ -54,6 +41,7 @@ export default class Paddle {
       let bottomY = y + height;
       return [leftX, rightX, topY, bottomY];
     }
+
 
     //...
     render(svg) {
