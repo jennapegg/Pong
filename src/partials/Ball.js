@@ -31,11 +31,14 @@ export default class Ball {
       const hitTop = this.y - this.radius <= 0;
       const hitBottom = this.y + this.radius >= this.boardHeight;
 
-      if(hitLeft === true || hitRight === true){
+      if(hitLeft || hitRight){
         this.vx *= -1;
-      }else if (hitTop === true || hitBottom === true){
+        // this.ball.setAttributeNS(null, 'fill', '#000');
+     }else if (hitTop || hitBottom){
         this.vy *= -1;
-      }
+      } //else {
+      //   this.ball.setAttributeNS(null, 'fill', '#000');
+      // }
     }
 
     paddleCollision(player1, player2) {
@@ -51,7 +54,16 @@ export default class Ball {
             this.vx *= -1
         }
       } else {
-        //...
+        let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
+        let [leftX, rightX, topY, bottomY] = paddle;
+
+        if(
+          (this.x - this.radius <= rightX) &&
+          (this.x - this.radius >= leftX) &&
+          (this.y >= topY && this.y <= bottomY)
+        ){
+          this.vx *= -1
+        }
       }
     }
 
