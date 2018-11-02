@@ -1,5 +1,4 @@
 import { SVG_NS } from "../settings";
-// import Paddle from "./Paddle";
 
 export default class Ball {
     constructor(radius, boardWidth, boardHeight,) {
@@ -39,7 +38,24 @@ export default class Ball {
       }
     }
 
-    render(svg) {
+    paddleCollision(player1, player2) {
+      if (this.vx > 0) {
+        let paddle = player2.coordinates(player2.x, player2.y, player2.width, player2.height);
+        let [leftX, rightX, topY, bottomY] = paddle;
+
+        if (
+          (this.x + this.radius >= leftX) && 
+          (this.x +this.radius <= rightX) && 
+          (this.y >= topY && this.y <= bottomY)
+          ){
+            this.vx *= -1
+        }
+      } else {
+        //...
+      }
+    }
+
+    render(svg, player1, player2) {
         // this.vx += this.ax;
         // this.vy += this.ay;
 
@@ -47,6 +63,7 @@ export default class Ball {
         this.y += this.vy;
 
         this.wallCollision();
+        this.paddleCollision(player1, player2);
         
         let ball = document.createElementNS(SVG_NS, 'circle');
 
