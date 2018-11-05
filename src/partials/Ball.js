@@ -9,7 +9,10 @@ export default class Ball {
 
       this.color = "#FFF";
 
+      this.paddleHeight = 56;
+
       this.ping = new Audio("public/sounds/pong-01.wav");
+      this.ping2 = new Audio("public/sounds/pong-02.wav");
 
       this.reset();
     } // end of constructor
@@ -34,7 +37,7 @@ export default class Ball {
       const hitRight = this.x + this.radius >= this.boardWidth;
       const hitTop = this.y - this.radius <= 0;
       const hitBottom = this.y + this.radius >= this.boardHeight;
-      let colors = ['red', 'green', 'blue', 'orange', 'yellow'];
+      let colors = ['#4286f4', '#9c16b7', '#146b08', '#843329', '#e2b32f'];
 
       if(hitLeft || hitRight){
         this.vx *= -1;
@@ -58,6 +61,7 @@ export default class Ball {
           ){
             this.vx *= -1
             this.ping.play();
+
         }
       } else {
         let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
@@ -78,11 +82,12 @@ export default class Ball {
       player.score++;
       this.reset();
       player.score;
+      this.ping2.play()
     }
 
     render(svg, player1, player2) {
-        // this.vx += this.ax;
-        // this.vy += this.ay;
+        // this.vx += this.ax * speed;
+        // this.vy += this.ay *speed;
 
         const goalLeft = this.x - this.radius <= 0;
         const goalRight = this.x + this.radius >= this.boardWidth;

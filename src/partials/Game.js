@@ -20,12 +20,15 @@ export default class Game {
 	//ball
 
 	this.ball = new Ball(8, this.width, this.height);
+	this.ball2 = new Ball(8, this.width, this.height);
+	this.ball3 = new Ball(8, this.width, this.height);
+
 
 	//paddle
 	this.player1 = new Paddle(
 		this.height,
 		this.paddleWidth, 
-		this.paddleHeight, 
+		this.paddleHeight, //=  this.paddleSize(56), 
 		this.boardGap,
 		((this.height - this.paddleHeight) / 2),
 		KEYS.a,
@@ -59,9 +62,23 @@ export default class Game {
     // Other code goes here...
     this.gameElement = document.getElementById(this.element);
 	this.board = new Board(this.width, this.height);
+	
+	
   }//end of constructor
 
-  
+//   paddleSize() {
+
+// 	if(this.player1.score){
+// 		console.log("banana")
+// 		this.player1.paddleHeight = 10;
+// 	} else if(this.player2.score){
+// 		console.log("paddle")
+// 		this.player2.paddleHeight = 80;
+// 	} else {
+// 		this.player1.paddleHeight = 56;
+// 	}
+// }
+
   //what will be drawing the game
   render() {
 	// More code goes here...
@@ -69,11 +86,16 @@ export default class Game {
 		return;
 	}
 
+	
+
+	// this.paddleSize();
+	
+	
 	if(this.player1.score === 10){
-		alert('You Won!');
+		alert('You Won Player 1!');
 		location.reload();
 	}  else if(this.player2.score === 10){
-		alert('You Won!');
+		alert('You Won PLayer 2!');
 		location.reload();
 	}
 
@@ -89,6 +111,13 @@ export default class Game {
 	this.player1.render(svg);
 	this.player2.render(svg);
 	this.ball.render(svg, this.player1, this.player2);
+
+	if (this.player1.score >= 4 || this.player2.score >= 4){
+		this.ball2.render(svg, this.player1, this.player2);
+	} 
+	if(this.player1.score >= 7 || this.player2.score >= 7){
+		this.ball3.render(svg, this.player1, this.player2);
+	}
 
 	this.score1.render(svg, this.player1.score);
 	this.score2.render(svg, this.player2.score);
