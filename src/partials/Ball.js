@@ -18,9 +18,6 @@ export default class Ball {
     } // end of constructor
 
     reset() {
-      // this.ax = 0.01;
-      // this.ay = 0.01;
-
       this.x = this.boardWidth / 2;
       this.y = this.boardHeight / 2;
 
@@ -86,9 +83,6 @@ export default class Ball {
     }
 
     render(svg, player1, player2) {
-        // this.vx += this.ax * speed;
-        // this.vy += this.ay *speed;
-
         const goalLeft = this.x - this.radius <= 0;
         const goalRight = this.x + this.radius >= this.boardWidth;
 
@@ -97,7 +91,7 @@ export default class Ball {
           this.direction = -1;
           }else if(goalRight){
             this.goal(player1);
-            this.direction = 1;
+            this.direction = -1;
           }
 
         this.x += this.vx;
