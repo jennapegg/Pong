@@ -74,12 +74,12 @@ export default class Game {
 			return;
 		}
 
-		if (this.player1.score === 1) {
+		if (this.player1.score === 10) {
 			this.gameOver = true;
 			alert('You Won Player 1!');
 			document.location.reload();
 			this.gameOver = true;
-		} else if (this.player2.score === 1) {
+		} else if (this.player2.score === 10) {
 			alert('You Won PLayer 2!');
 			document.location.reload();
 			this.gameOver = true;
