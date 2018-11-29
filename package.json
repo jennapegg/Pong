@@ -1,7 +1,7 @@
 {
   "name": "pong-svg",
   "version": "0.1.0",
-  "description": "An SVG Pong game.",
+  "description": "A Pong Game built with SVG's.",
   "license": "ISC",
   "author": "Jenna Pegg",
   "main": "build/bundle.js",
