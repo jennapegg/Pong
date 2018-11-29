@@ -106,14 +106,6 @@ export default class Game {
 			this.ball3.render(svg, this.player1, this.player2);
 		}
 
-		// if(this.player1.score === 1){
-		// 	console.log("banana")
-		// 	this.player1.paddleHeight = 10;
-		//   } else if(this.player2.score === 1){
-		// 	console.log("paddle")
-		// 	this.player2.paddleHeight = 80;
-		//   } 
-
 		this.player1.paddleHeight
 
 		this.score1.render(svg, this.player1.score);
