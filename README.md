@@ -30,4 +30,8 @@ A basic pong game using SVGs. This game was built to show the JavaScript skills 
 
 # Reflections
 
-This game helped me to better understand how JavaScript Partials work in relation to each other, as well as giving me a better understanding of "vanilla" JavaScript. It allowed me to work throught the basics of the game with the instructor, and then come up with ,y own creative spins on how I could change the game. 
+This game helped me to better understand how JavaScript Partials work in relation to each other, as well as giving me a better understanding of "vanilla" JavaScript. It allowed me to work throught the basics of the game with the instructor, and then come up with my own creative spins on how I could change the game. 
+
+# Authors 
+
+- Jenna Pegg
